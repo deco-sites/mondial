@@ -8,6 +8,13 @@ import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
 
+export interface AlertLink {
+  description: string;
+  children?: Array<{
+    label: string;
+    href: string;
+  }>;
+}
 export interface NavItem {
   label: string;
   href: string;
@@ -26,7 +33,7 @@ export interface NavItem {
 }
 
 export interface Props {
-  alerts: string[];
+  alerts: AlertLink[];
   /** @title Search Bar */
   searchbar?: SearchbarProps;
   /**
@@ -48,7 +55,7 @@ export interface Props {
 }
 
 function Header({
-  alerts,
+  alerts = [],
   searchbar: _searchbar,
   products,
   navItems = [],
