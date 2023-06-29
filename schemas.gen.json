@@ -9258,6 +9258,47 @@
       "required": [],
       "title": "deco-sites/mondial/components/footer/Footer.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9tb25kaWFsL2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@AlertLink": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "title": "Description"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "title": "Label"
+              },
+              "href": {
+                "type": "string",
+                "title": "Href"
+              }
+            },
+            "required": [
+              "label",
+              "href"
+            ]
+          },
+          "title": "Children"
+        }
+      },
+      "required": [
+        "description"
+      ],
+      "title": "AlertLink"
+    },
+    "ZGVjby1zaXRlcy9tb25kaWFsL2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@AlertLink[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9tb25kaWFsL2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@AlertLink"
+      },
+      "title": "AlertLink[]"
+    },
     "ZGVjby1zaXRlcy9tb25kaWFsL2NvbXBvbmVudHMvc2VhcmNoL1NlYXJjaGJhci50c3g=@EditableProps": {
       "type": "object",
       "properties": {
@@ -9388,10 +9429,7 @@
       "type": "object",
       "properties": {
         "alerts": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9tb25kaWFsL2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@AlertLink[]",
           "title": "Alerts"
         },
         "searchbar": {

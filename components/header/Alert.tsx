@@ -1,32 +1,26 @@
-import Slider from "$store/components/ui/Slider.tsx";
-import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "preact/hooks";
-
-export interface Props {
-  alerts: string[];
-  /**
-   * @title Autoplay interval
-   * @description time (in seconds) to start the carousel autoplay
-   */
-  interval?: number;
+import type { AlertLink } from "./Header.tsx";
+interface Props {
+  alerts: AlertLink[];
 }
 
-function Alert({ alerts = [], interval = 5 }: Props) {
+function Alert({ alerts }: Props) {
   const id = useId();
-
   return (
-    <div id={id}>
-      <Slider class="carousel carousel-center w-screen bg-primary gap-6 scrollbar-none">
+    <div id={id} class={"bg-primary"}>
+      <div class="container">
         {alerts.map((alert, index) => (
-          <Slider.Item index={index} class="carousel-item">
-            <span class="text-sm text-secondary-content flex justify-center items-center w-screen h-[38px]">
-              {alert}
-            </span>
-          </Slider.Item>
+            <div key={index} class="grid grid-cols-2 py-1"><span class="text-sm" key={index}>{alert.description}</span>
+              <ul class="flex justify-between align-middle">
+                {alert.children?.map((child,index) => (
+                  <li class="text-sm" key={index}>
+                    <a class="hover:underline" href={child.href}>{child.label}</a>
+                  </li>
+                ))}
+              </ul>
+          </div>
         ))}
-      </Slider>
-
-      <SliderJS rootId={id} interval={interval && interval * 1e3} />
+      </div>
     </div>
   );
 }
